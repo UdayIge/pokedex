@@ -78,6 +78,20 @@ body {
   font-size: 1.6rem;
 }
 
+.search button {
+  padding: 10px 14px;
+  margin-left: 10px;
+  border: 3px solid var(--card-border);
+  border-radius: 6px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.search button:hover {
+  background-color: #dddddd;
+}
+
 .main-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -100,6 +114,26 @@ body {
   object-fit: contain;
 }
 
+.image .loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid var(--header-bg);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .description {
   border: 3px solid black;
   min-height: 350px;
@@ -119,70 +153,87 @@ body {
   background-color: #a8a77a;
   color: white;
 }
+
 .types-fire {
   background-color: #ee8130;
   color: white;
 }
+
 .types-water {
   background-color: #6390f0;
   color: white;
 }
+
 .types-electric {
   background-color: #f7d02c;
   color: black;
 }
+
 .types-grass {
   background-color: #7ac74c;
   color: white;
 }
+
 .types-ice {
   background-color: #96d9d6;
   color: black;
 }
+
 .types-fighting {
   background-color: #c22e28;
   color: white;
 }
+
 .types-poison {
   background-color: #a33ea1;
   color: white;
 }
+
 .types-ground {
   background-color: #e2bf65;
   color: black;
 }
+
 .types-flying {
   background-color: #a98ff3;
   color: white;
 }
+
 .types-psychic {
   background-color: #f95587;
   color: white;
 }
+
 .types-bug {
   background-color: #a6b91a;
   color: white;
 }
+
 .types-rock {
   background-color: #b6a136;
   color: white;
 }
+
 .types-ghost {
   background-color: #735797;
   color: white;
 }
+
 .types-dragon {
   background-color: #6f35fc;
   color: white;
 }
+
 .types-dark {
   background-color: #705746;
   color: white;
 }
+
 .types-steel {
   background-color: #b7b7ce;
   color: black;
 }
+
 .types-fairy {
   background-color: #d685ad;
   color: white;
@@ -201,6 +252,7 @@ body {
 .poke-name {
   font-size: 3rem;
   margin-bottom: 20px;
+  margin-top: 25px;
   text-align: left;
 }
 
@@ -210,6 +262,149 @@ body {
   font-size: 1.4rem;
 }
 
+.ability-item {
+  font-size: 1.2rem;
+  list-style: disc;
+  margin-left: 20px;
+}
+
+/* Responsive Styles - Improved */
+@media (max-width: 1200px) {
+  .pokedex {
+    width: 95vw;
+    height: auto;
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 900px) {
+  .pokedex {
+    min-width: 0;
+    height: auto;
+    border-width: 6px;
+  }
+
+  .main-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .image,
+  .description {
+    min-height: 200px;
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+
+  .poke-no {
+    font-size: 1rem;
+    margin: 8px;
+  }
+
+  .poke-name {
+    font-size: 1.5rem;
+  }
+
+  .poke-no {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+
+  [class^="types-"] {
+    font-size: 0.9rem;
+    padding: 3px 7px;
+    margin-right: 3px;
+  }
+
+  .ability-item {
+    font-size: 0.95rem;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  html {
+    font-size: 15px;
+    padding: 4px;
+  }
+
+  .pokedex {
+    width: 97vw;
+    min-width: 0;
+    height: auto;
+    border-width: 6px;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .header {
+    font-size: 1.1rem;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .search {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .search input {
+    flex: 1;
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .search button {
+    width: fit-content;
+    font-size: 1rem;
+    margin-left: 0;
+  }
+
+  .main-card {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .image,
+  .description {
+    min-height: 100px;
+    padding: 6px;
+    font-size: 1rem;
+  }
+
+  .poke-name {
+    font-size: 1.5rem;
+  }
+
+  .poke-no {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+
+  [class^="types-"] {
+    font-size: 0.9rem;
+    padding: 3px 7px;
+    margin-right: 3px;
+  }
+
+  .show-types {
+    margin-right: 4px;
+    display: inline;
+  }
+
+  .ability-item {
+    font-size: 0.95rem;
+    margin-left: 10px;
+  }
+}
 .ability-item {
   font-size: 1.2rem;
   list-style: disc;
