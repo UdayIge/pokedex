@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import ExitIcon from "./assets/download.png"
 
 export default function App() {
   const [query, setQuery] = useState("");
