@@ -48,7 +48,7 @@ export default function App() {
   return (
     <div className="pokedex">
       <Header />
-      <Search query={query} setQuery={setQuery} />
+      <Search query={query} setQuery={setQuery} getPokemon={getPokemon} />
       <PokeMainCard pokemon={pokemon} />
     </div>
   );
@@ -59,7 +59,7 @@ function Header() {
     <div className="header">
       <div className="info">Info</div>
       <h2 className="title">POKEDEX</h2>
-      <div className="exit">X</div>
+      <div className="exit">⨉</div>
     </div>
   );
 }
@@ -73,7 +73,13 @@ function PokeMainCard({ pokemon }) {
   );
 }
 
-function Search({ query, setQuery }) {
+function Search({ query, setQuery, getPokemon }) {
+  const handleClick = () => {
+    if (query.trim() !== "") {
+      getPokemon(query.toLowerCase());
+    }
+  }
+
   return (
     <div className="search">
       <input
@@ -81,15 +87,37 @@ function Search({ query, setQuery }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
+      <button onClick={handleClick}>
+        search
+      </button>
     </div>
   );
 }
 
 function PokeImage({ pokemon }) {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(!!pokemon);
+  }, [pokemon?.image]);
+
+  function handleImageLoad() {
+    setLoading(false);
+  }
+
   return (
     <div className="image">
       {pokemon ? (
-        <img src={pokemon.image} alt={pokemon.name} />
+        <>
+          {loading && <div className="loader"></div>}
+          <img
+            key={pokemon.image}
+            src={pokemon.image}
+            alt={pokemon.name}
+            style={{ display: loading ? "none" : "block" }}
+            onLoad={handleImageLoad}
+          />
+        </>
       ) : (
         <p>No pokemon to display!</p>
       )}
@@ -106,7 +134,7 @@ function PokeDescription({ pokemon }) {
           <h2 className="poke-name">
             {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
           </h2>
-          <p className="section-title">Type:</p>
+          <p className="section-title show-types">Type:</p>
           {pokemon.types.map((type) => (
             <span key={type} className={`types-${type}`}>
               {type.charAt(0).toUpperCase() + type.slice(1)}
